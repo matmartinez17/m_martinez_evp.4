@@ -1,0 +1,59 @@
+# Lista donde se almacenan los productos
+productos = []
+
+# Función para agregar un producto
+def agregar_producto():
+    nombre = input("Nombre del producto: ")
+    precio = float(input("Precio del producto: "))
+    stock = int(input("Cantidad en stock: "))
+    producto = {
+        "nombre": nombre,
+        "precio": precio,
+        "stock": stock
+    }
+    productos.append(producto)
+    print(" Producto agregado correctamente.\n")
+
+# Función para buscar un producto por nombre
+def buscar_producto():
+    nombre = input("Ingrese el nombre del producto a buscar: ")
+    encontrado = False
+    for p in productos:
+        if p["nombre"].lower() == nombre.lower():
+            print(f" Producto encontrado: {p}")
+            encontrado = True
+            break
+    if not encontrado:
+        print(" Producto no encontrado.\n")
+
+# Función para mostrar todos los productos
+def mostrar_productos():
+    if len(productos) == 0:
+        print(" No hay productos registrados.\n")
+    else:
+        print(" Lista de productos:")
+        for i, p in enumerate(productos, 1):
+            print(f"{i}. {p['nombre']} - ${p['precio']} - Stock: {p['stock']}")
+        print()
+
+# Menú principal
+def menu():
+    while True:
+        print("\n=== MENÚ PRINCIPAL ===")
+        print("1. Agregar producto")
+        print("2. Buscar producto")
+        print("3. Mostrar todos los productos")
+        print("4. Salir")
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            agregar_producto()
+        elif opcion == "2":
+            buscar_producto()
+        elif opcion == "3":
+            mostrar_productos()
+        elif opcion == "4":
+            print(" Saliendo del programa.")
+            break
+        else:
+            print(" Opción inválida. Intente nuevamente.")
